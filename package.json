@@ -1,0 +1,10 @@
+{
+  "name": "recipe-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pencarian resep berdasarkan satu bahan atau kategori TheMealDB.",
+  "scripts": { "test": "node --test tests/api.test.js", "test:browser": "node tests/browser.mjs" },
+  "engines": { "node": ">=22" },
+  "devDependencies": { "playwright": "1.64.1" }
+}

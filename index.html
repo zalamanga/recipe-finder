@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Temukan resep dari satu bahan utama atau kategori melalui TheMealDB.">
+  <title>FoodRecipe | Cari resep dari bahanmu</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">Lewati ke hasil resep</a>
+  <header class="wrap masthead">
+    <a class="brand" href="index.html" aria-label="FoodRecipe, beranda"><img src="icon.png" width="42" height="42" alt="">FoodRecipe</a>
+    <nav aria-label="Navigasi utama"><a href="#search">Cari bahan</a><a href="#categories">Kategori</a></nav>
+  </header>
+  <main>
+    <section class="intro wrap" aria-labelledby="page-title">
+      <div class="intro-text"><h1 id="page-title">Mulai dari bahan di dapur.</h1><p>Temukan resep dari satu bahan utama, atau jelajahi kategori masakan.</p><p class="hint">Resep dan gambar hasil pencarian berasal dari <a href="https://www.themealdb.com/" target="_blank" rel="noopener noreferrer">TheMealDB (tab baru)</a>. Bahasa resep mengikuti sumbernya.</p></div>
+      <img class="food-photo" src="bg.jpeg" alt="Bahan masakan dan rempah di atas meja" width="5281" height="2631">
+    </section>
+    <div class="wrap">
+      <noscript><p class="notice">Aktifkan JavaScript dan koneksi internet untuk mengambil resep.</p></noscript>
+      <div class="browse-controls">
+        <section id="search" aria-labelledby="search-title">
+          <h2 id="search-title">Cari dari bahan utama</h2>
+          <form id="ingredient-form"><label for="ingredient">Nama satu bahan dalam bahasa Inggris</label><div class="input-row"><input id="ingredient" name="ingredient" required maxlength="80" placeholder="Contoh: chicken breast" autocomplete="off" aria-describedby="ingredient-hint"><button class="primary" type="submit">Cari resep</button></div></form>
+          <p id="ingredient-hint" class="hint">Gunakan satu bahan per pencarian. Contoh: tomato, chicken breast, atau rice.</p>
+          <p id="input-error" class="error" role="alert" hidden></p>
+        </section>
+        <section id="categories" aria-labelledby="category-title">
+          <h2 id="category-title">Jelajahi kategori</h2>
+          <form id="category-form"><label for="category">Kategori masakan</label><div class="input-row"><select id="category" required disabled><option value="">Memuat kategori…</option></select><button id="browse-category" type="submit" disabled>Lihat resep</button></div></form>
+          <p id="category-status" class="hint" role="status">Mengambil daftar kategori…</p>
+          <button id="retry-categories" type="button" hidden>Coba muat kategori lagi</button>
+        </section>
+      </div>
+      <section id="results" class="results" aria-labelledby="results-title" tabindex="-1">
+        <div class="results-heading"><h2 id="results-title">Resep untuk dicoba</h2><button id="reset-results" type="button" hidden>Bersihkan hasil</button></div>
+        <p id="result-status" role="status" aria-live="polite">Cari satu bahan atau pilih kategori untuk melihat resep.</p>
+        <button id="retry-results" type="button" hidden>Coba lagi</button>
+        <div id="meal-list" class="meal-grid" aria-busy="false"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap"><p>FoodRecipe · Proyek belajar JavaScript. Detail, bahan, dan takaran mengikuti data TheMealDB; periksa kesesuaiannya sebelum memasak.</p><a href="https://www.themealdb.com/api.php" target="_blank" rel="noopener noreferrer">Dokumentasi API (tab baru)</a></footer>
+  <dialog id="recipe-dialog" aria-labelledby="recipe-title">
+    <div class="dialog-header"><h2 id="recipe-title">Detail resep</h2><button id="close-recipe" type="button" autofocus>Tutup resep</button></div>
+    <p id="detail-status" role="status" aria-live="polite"></p><button id="retry-detail" type="button" hidden>Coba muat detail lagi</button><div id="recipe-detail" aria-busy="false"></div>
+  </dialog>
+</body>
+</html>
